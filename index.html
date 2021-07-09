@@ -1,0 +1,124 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Real world Food delievery Application">
+    <title>Food delivery</title>
+    <style type="text/css">
+          tr{
+              background-color: orange;
+              color: white;
+              text-align: center;
+          }
+          dt{
+              font-weight: bold;
+              background-color: orange;
+              color: white;
+          }
+    </style>
+    <script>
+        function placeOrder(){
+            document.getElementById("orderSummary").style.display="block";
+            document.getElementById("orderform").style.display="none";
+            uName=document.getElementById('txtName');
+            mobile=document.getElementById('txtMobile');
+            burger=document.getElementById('optBurger');
+            roller=document.getElementById('optRoller');
+            fries=document.getElementById('optFries');
+
+            var mcost = 0;
+            var acost = 0;
+            var mname = " ";
+            var aname= " ";
+            if(burger.checked){
+                mcost = 120;
+                mname = burger.value;
+            }
+            if(roller.checked){
+                mcost = 100;
+                mname = roller.value;
+            }
+            if(fries.checked){
+                acost = 60;
+                mcost += acost;
+                aname += fries.value  +"<br>";
+            }
+            document.getElementById('lblName').innerHTML=uName.value;
+            document.getElementById('lblMobile').innerHTML=mobile.value;
+            document.getElementById('lblMeal').innerHTML=mname;
+            document.getElementById('lbladd').innerHTML=aname;
+            document.getElementById('lblAmount').innerHTML=mcost;
+        }
+    </script>
+</head>
+<body>
+    <div>
+
+        <table width="100%" height="100%" border="2" cellspacing="4" cellpadding="4" align="center" id="orderform">
+               
+                   <!-- <tr>
+                       <td>
+                           <img src="images/Good_Food_Display_-_NCI_Visuals_Online.jpg" alt="food" width="300" height="300">
+                       </td>
+                   </tr> -->
+                   <tr>
+                       <td colspan="2"  style="font-size: 50px;">Customer Details </td>
+                   </tr>
+                   <tr>
+                       <td style="font-size: 20px;">Customer Name</td>
+                       <td> <input type="text" id="txtName" ></td>
+                   </tr>
+                   <tr>
+                       <td style="font-size: 20px;">Customer Mobile Number</td>
+                       <td><input type="text" id="txtMobile"></td>
+                   </tr>
+                   <tr>
+                       <td style="font-size: 20px;" >Select a meal</td>
+                   </tr>
+                   <tr>
+                       <td><img src="images/burger.jpg" alt="burger" width="200" height="200px">
+                       <br>
+                       <input type="radio" name="meal" id="optBurger" value="OmgBurger">OmgBurger(&#8377;120/-)
+                       </td>
+                       <td>
+                           <img src="images/chocolate_swiss_roll_main.jpg" alt="chocolate roll" width="200" height="200">
+                           <br>
+                           <input type="radio" name="meal" id="optRoller" value="OmgRoller">OmgRoller(&#8377;100/-)
+                       </td>
+                   </tr>
+                   <tr>
+                       <td colspan="2">
+                          Select Ad-on's
+                       </td>
+                   </tr>
+                   <tr>
+                       <td>
+                           <img src="images/maxresdefault.jpg" alt="french fries" width="200" height="200">
+                           <br>
+                           <input type="checkbox" id="optFries" value="largefries">largefries(&#8377;60/-)
+                       </td>
+                   </tr>
+                   <tr>
+                       <td><input type="button" value="Place Order" onclick="placeOrder()"></td>
+                   </tr> 
+        </table>
+        <br>
+        <dl id="orderSummary" style="display: none;">
+        <h2>Order summary</h2>
+        <dt>Customer Name</dt>
+        <dd id="lblName"></dd>
+        <dt>mobile</dt>
+        <dd id="lblMobile"></dd>
+        <dt>Meal</dt>
+        <dd id="lblMeal"></dd>
+        <dt>AD-on's</dt>
+        <dd id="lbladd"></dd>
+        <dt>Total Bill amount</dt>
+        <dd id="lblAmount"></dd>
+        <br>
+        <input type="button" value="printBill" onclick="window.print()">
+        </dl>
+    </div>
+</body>
+</html>
